@@ -14,6 +14,6 @@ void refresh_gui(int pos_x, int pos_y, uint8_t **known_matrix, int size);
 
 void destroy_gui();
 
-void draw_matrix(SDL_Window *pWindow, uint8_t **matrix, int size);
+void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size);
 
 #endif

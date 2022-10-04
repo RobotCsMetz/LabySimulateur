@@ -5,6 +5,4 @@
 #define LABY_CELL_SIZE 180
 #define WALL_WIDTH 12
 
-#define DRAW_SCALE 10
-
 #endif
