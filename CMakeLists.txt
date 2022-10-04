@@ -7,7 +7,10 @@ enable_testing()
 add_subdirectory(gui)
 add_subdirectory(algorithm)
 
-add_executable(LabySimulateur main.c)
+file(GLOB MAIN_HEADERS ./*.h)
+file(GLOB MAIN_SOURCES ./*.c)
+
+add_executable(LabySimulateur ${MAIN_HEADERS} ${MAIN_SOURCES})
 target_link_libraries(LabySimulateur gui algorithm)
 
 #C11
