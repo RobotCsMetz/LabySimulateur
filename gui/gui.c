@@ -74,6 +74,19 @@ void refresh_gui(int pos_x, int pos_y, int angle, uint8_t **known_matrix, int si
 
 void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size)
 {
+    int win_height = SDL_GetWindowSurface(main_window)->h;
+    int win_width = SDL_GetWindowSurface(main_window)->w;
+    int height_is_max = win_height > win_width;
+    int win_size = height_is_max ? win_width : win_height;
+    draw_scale = (float)win_size/(LABY_CELL_NUMBER*LABY_CELL_SIZE);
+    int offset_x = 0;
+    int offset_y = 0;
+    if (height_is_max) {
+      offset_y = (win_height - win_size)/2;
+    } else {
+      offset_x = (win_width - win_size)/2;
+    }
+
     SDL_Rect verti_wall = {0, 0, WALL_WIDTH*draw_scale, LABY_CELL_SIZE*draw_scale};
     SDL_Rect horiz_wall = {0, 0, LABY_CELL_SIZE*draw_scale, WALL_WIDTH*draw_scale};
     int i = 0;
@@ -83,26 +96,26 @@ void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size)
         for(j = 0; j < size; j++) {
             //up wall
             if(check_bit(matrix[i][j], 1)) {
-                horiz_wall.x = j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
-                horiz_wall.y = i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
+                horiz_wall.x = (i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
+                horiz_wall.y = (j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
                 SDL_RenderFillRect(renderer, &horiz_wall);
             }
             //right wall
             if(check_bit(matrix[i][j], 2)) {
-                verti_wall.x = (j+1)*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
-                verti_wall.y = i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
+                verti_wall.x = ((i+1)*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
+                verti_wall.y = (j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
                 SDL_RenderFillRect(renderer, &verti_wall);
             }
             //bottom wall
             if(check_bit(matrix[i][j], 3)) {
-                horiz_wall.x = j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
-                horiz_wall.y = (i+1)*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
+                horiz_wall.x = (i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
+                horiz_wall.y = ((j+1)*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
                 SDL_RenderFillRect(renderer, &horiz_wall);
             }
             //left wall
             if(check_bit(matrix[i][j], 4)) {
-                verti_wall.x = j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
-                verti_wall.y = i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2;
+                verti_wall.x = (i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
+                verti_wall.y = (j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
                 SDL_RenderFillRect(renderer, &verti_wall);
             }
         }
