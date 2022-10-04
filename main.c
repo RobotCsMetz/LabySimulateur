@@ -4,7 +4,8 @@
 
 int main(int argc, char** argv)
 {
-    init_gui();
+    init_gui(400);
 
+    SDL_Delay(2000);
     return EXIT_SUCCESS;
 }
