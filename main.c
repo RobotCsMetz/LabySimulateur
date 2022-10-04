@@ -28,9 +28,7 @@ int main(int argc, char** argv)
                 break;
         }
 
-        refresh_gui(0, 0, 0, unknow, LABY_CELL_NUMBER);
-
-        SDL_Delay(10);
+        refresh_gui(50, 50, 0, unknow, LABY_CELL_NUMBER);
     }
 
     fprintf(stdout, "Erreur lors de la récupération d'évenement (%s)", SDL_GetError());
