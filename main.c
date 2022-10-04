@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "gui/gui.h"
 
 int main(int argc, char** argv)
 {
-    printf("Hello, World!\n");
+    init_gui();
 
     return EXIT_SUCCESS;
 }
