@@ -2,35 +2,17 @@
 #include <stdlib.h>
 #include "laby_conf.h"
 #include "gui/gui.h"
-
-uint8_t **create_2D_array(int size, uint8_t val)
-{
-    uint8_t **ptr;
-    int i=0;
-    ptr = malloc(sizeof(uint8_t*)*size);
-    for(i=0; i < size; i++) {
-        ptr[i] = malloc(sizeof(uint8_t)*size);
-        memset(ptr[i], val, sizeof(uint8_t)*size);
-    }
-
-    return ptr;
-}
-
-void free_2D_array(uint8_t **array, int size)
-{
-    int i;
-    for(i=0; i < size; i++) {
-        free(array[i]);
-    }
-    free(array);
-}
+#include "utils.h"
 
 int main(int argc, char** argv)
 {
     SDL_Event event;
-    uint8_t **matrix;
+    uint8_t **matrix, **unknow;
 
     matrix = create_2D_array(LABY_CELL_NUMBER, 255);
+    unknow = copy_2D_array(matrix, LABY_CELL_NUMBER);
+    unknow[3][3] = 0;
+    unknow[4][3] = 0;
 
     init_gui(matrix);
 
@@ -45,7 +27,7 @@ int main(int argc, char** argv)
                 break;
         }
 
-        refresh_gui(0, 0, 0, 0);
+        refresh_gui(0, 0, 0, unknow, LABY_CELL_NUMBER);
 
         SDL_Delay(10);
     }

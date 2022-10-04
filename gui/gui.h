@@ -5,15 +5,28 @@
 #include <stdio.h>
 #include "../api.h"
 #include "../laby_conf.h"
+#include "../utils.h"
 
-/// @brief Initialise l'interface SDL et crée une fenêtre dont la taille est spécifié en argument
-/// @return le pointeur vers la fenêtre créée
+/// @brief Initialise the GUI by creating the window and the renderer
+/// @param matrix The previously generated matrix to show in background
+/// @return A pointer to the created window
 SDL_Window* init_gui(uint8_t **matrix);
 
-void refresh_gui(int pos_x, int pos_y, uint8_t **known_matrix, int size);
+/// @brief Function to call to refresh the GUI
+/// @param pos_x Position x of the robot (in mm)
+/// @param pos_y Position y of the robot (in mm)
+/// @param angle Angle of the robot (in rad). A 0 value means pointing to right
+/// @param known_matrix The actual know matrix by the robot
+/// @param size The size of the known matrix
+void refresh_gui(int pos_x, int pos_y, int angle, uint8_t **known_matrix, int size);
 
+/// @brief Function to call at the end to free the SDL library
 void destroy_gui();
 
+/// @brief Draw the representation of a matrix on the renderer
+/// @param renderer The renderer where to draw
+/// @param matrix The matrix to draw
+/// @param size The size of the matrix
 void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size);
 
 #endif
