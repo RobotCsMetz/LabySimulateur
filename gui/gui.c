@@ -107,18 +107,18 @@ void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size)
                 verti_wall.y = (j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
                 SDL_RenderFillRect(renderer, &verti_wall);
             }
-            //bottom wall
-            if(check_bit(matrix[i][j], 3)) {
-                horiz_wall.x = (i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
-                horiz_wall.y = ((j+1)*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
-                SDL_RenderFillRect(renderer, &horiz_wall);
-            }
-            //left wall
-            if(check_bit(matrix[i][j], 4)) {
-                verti_wall.x = (i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
-                verti_wall.y = (j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
-                SDL_RenderFillRect(renderer, &verti_wall);
-            }
+            // //bottom wall
+            // if(check_bit(matrix[i][j], 3)) {
+            //     horiz_wall.x = (i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
+            //     horiz_wall.y = ((j+1)*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
+            //     SDL_RenderFillRect(renderer, &horiz_wall);
+            // }
+            // //left wall
+            // if(check_bit(matrix[i][j], 4)) {
+            //     verti_wall.x = (i*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_x;
+            //     verti_wall.y = (j*LABY_CELL_SIZE*draw_scale - WALL_WIDTH*draw_scale/2) + offset_y;
+            //     SDL_RenderFillRect(renderer, &verti_wall);
+            // }
         }
     }
 }
