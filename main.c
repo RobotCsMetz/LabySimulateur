@@ -17,6 +17,7 @@ int main(int argc, char** argv)
     init_gui(matrix);
 
     while(1) {
+        /* Event loop */
         SDL_PollEvent(&event);
         switch (event.type) {
             case SDL_QUIT:
@@ -35,6 +36,7 @@ int main(int argc, char** argv)
     fprintf(stdout, "Erreur lors de la récupération d'évenement (%s)", SDL_GetError());
 
 noerror:
+    /* free everything */
     free_2D_array(matrix, LABY_CELL_NUMBER);
     destroy_gui();
 

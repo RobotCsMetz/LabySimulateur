@@ -1,15 +1,40 @@
 #include "gui.h"
 
+/* static vars */
 uint8_t **global_matrix;
 SDL_Window *main_window;
 SDL_Renderer *main_renderer;
 float draw_scale;
+int win_size, offset_x, offset_y;
+
+void auto_scale()
+{
+    SDL_Surface *m_s = SDL_GetWindowSurface(main_window);
+    if(!m_s) {
+        fprintf(stdout, "Error can't get window surface for rescaling (%s).\n", SDL_GetError());
+        return;
+    }
+    /* calculate window size and draw scale */
+    int win_height = m_s->h;
+    int win_width = m_s->w;
+    int height_is_max = win_height > win_width;
+    int win_size = height_is_max ? win_width : win_height;
+    draw_scale = (float)win_size/(LABY_CELL_NUMBER*LABY_CELL_SIZE);
+
+    /* calculate offset */
+    offset_x = offset_y = 0;
+    if (height_is_max) {
+        offset_y = (win_height - win_size)/2;
+    } else {
+        offset_x = (win_width - win_size)/2;
+    }
+}
 
 SDL_Window* init_gui(uint8_t **matrix)
 {
-    int win_size;
-    SDL_Window* pWindow = NULL;
+
     SDL_DisplayMode DM;
+    global_matrix = matrix;
 
     /* Initialisation simple */
     if (SDL_Init(SDL_INIT_VIDEO) != 0 ) {
@@ -17,25 +42,24 @@ SDL_Window* init_gui(uint8_t **matrix)
         return NULL;
     }
 
-    /* calculate window size */
+    /* get height of screen for scaling */
     SDL_GetDesktopDisplayMode(0, &DM);
-    win_size = DM.h - 50;
-    draw_scale = (float)win_size/(LABY_CELL_NUMBER*LABY_CELL_SIZE);
+    win_size = DM.h;
 
     /* Création de la fenêtre */
-    pWindow = SDL_CreateWindow("Simulateur de labyrinthe",
+    main_window = SDL_CreateWindow("Simulateur de labyrinthe",
                                 SDL_WINDOWPOS_UNDEFINED,
                                 SDL_WINDOWPOS_UNDEFINED,
                                 win_size,
                                 win_size,
                                 SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
-    if( pWindow == NULL ) {
+    if( main_window == NULL ) {
         fprintf(stderr,"Erreur de création de la fenêtre: %s\n",SDL_GetError());
         return NULL;
     }
 
-    main_renderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
+    main_renderer = SDL_CreateRenderer(main_window, -1, SDL_RENDERER_ACCELERATED);
 
     if(!main_renderer) {
         fprintf(stdout,"Échec de création du renderer (%s)\n",SDL_GetError());
@@ -46,10 +70,9 @@ SDL_Window* init_gui(uint8_t **matrix)
     SDL_RenderSetViewport(main_renderer, &viewport);
     SDL_SetRenderDrawBlendMode(main_renderer, SDL_BLENDMODE_BLEND); // for alpha channel
 
-    global_matrix = matrix;
-    main_window = pWindow;
+    auto_scale();
 
-    return pWindow;
+    return main_window;
 }
 
 void refresh_gui(int pos_x, int pos_y, int angle, uint8_t **known_matrix, int size)
@@ -74,19 +97,8 @@ void refresh_gui(int pos_x, int pos_y, int angle, uint8_t **known_matrix, int si
 
 void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size)
 {
-    int win_height = SDL_GetWindowSurface(main_window)->h;
-    int win_width = SDL_GetWindowSurface(main_window)->w;
-    int height_is_max = win_height > win_width;
-    int win_size = height_is_max ? win_width : win_height;
-    draw_scale = (float)win_size/(LABY_CELL_NUMBER*LABY_CELL_SIZE);
-    int offset_x = 0;
-    int offset_y = 0;
-    if (height_is_max) {
-      offset_y = (win_height - win_size)/2;
-    } else {
-      offset_x = (win_width - win_size)/2;
-    }
-
+    auto_scale();
+    // prefiled rect for wall
     SDL_Rect verti_wall = {0, 0, WALL_WIDTH*draw_scale, LABY_CELL_SIZE*draw_scale};
     SDL_Rect horiz_wall = {0, 0, LABY_CELL_SIZE*draw_scale, WALL_WIDTH*draw_scale};
     int i = 0;
