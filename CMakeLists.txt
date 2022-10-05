@@ -14,7 +14,7 @@ file(GLOB MAIN_HEADERS ./*.h)
 file(GLOB MAIN_SOURCES ./*.c)
 
 add_executable(LabySimulateur ${MAIN_HEADERS} ${MAIN_SOURCES})
-target_link_libraries(LabySimulateur gui algorithm m)
+target_link_libraries(LabySimulateur simulator algorithm m)
 
 #C11
 set_property(TARGET LabySimulateur PROPERTY C_STANDARD 11)
