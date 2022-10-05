@@ -3,7 +3,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "laby_conf.h"
-#include "gui/gui.h"
+#include "simulator/gui.h"
 #include "utils.h"
 #include "api.h"
 

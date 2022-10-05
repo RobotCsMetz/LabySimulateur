@@ -9,12 +9,6 @@
 
 /* ### Structures declaration ### */
 
-/// @brief Structure for the velocity in mm/s
-typedef struct velocity {
-    uint16_t vel_x;
-    uint16_t vel_y;
-} velocity;
-
 /// @brief Structure of a positon in mm and deg
 typedef struct position {
     float pos_x;
@@ -46,12 +40,15 @@ uint8_t middleware_get_robot_position(robot *new_robot);
 /// @brief Move the robot straightforward to the point pos
 /// @param rob The current robot
 /// @param target_pos The target position
+/// @param travel_speed The max speed reached during travel (mm/s)
 /// @return
-void middleware_goto_position(robot *rob, position *target_pos);
+void middleware_goto_position(robot *rob, position *target_pos, float *travel_speed);
 
+/// @brief Stop the robot as fast as possible
+void middleware_stop();
 
 #ifdef SIMULATOR
-#include "gui/simulator.h"
+#include "simulator/simulator.h"
 #endif
 
 #endif

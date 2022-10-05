@@ -10,7 +10,7 @@ LabySimulateur/
 |
 |___algorithm/ : implémentation de la résolution
 |
-|___gui/ : interface graphique avec OpenGL/SDL2
+|___simulator/ : interface graphique avec OpenGL/SDL2 et fonctions de simulations
 |
 |___sdl2-lib/ : dossier pour la librairie SDL2 sous windows
 

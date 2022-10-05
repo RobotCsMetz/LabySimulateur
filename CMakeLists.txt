@@ -7,7 +7,7 @@ enable_testing()
 #we are in simulator
 add_definitions(-DSIMULATOR)
 
-add_subdirectory(gui)
+add_subdirectory(simulator)
 add_subdirectory(algorithm)
 
 file(GLOB MAIN_HEADERS ./*.h)
