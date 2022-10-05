@@ -9,9 +9,14 @@ add_subdirectory(algorithm)
 
 file(GLOB MAIN_HEADERS ./*.h)
 file(GLOB MAIN_SOURCES ./*.c)
+file(GLOB SIMULATOR_HEADERS ./simulator/*.h)
+file(GLOB SIMULATOR_SOURCES ./simulator/*.c)
 
-add_executable(LabySimulateur ${MAIN_HEADERS} ${MAIN_SOURCES})
-target_link_libraries(LabySimulateur gui algorithm)
+#we are in simulator
+add_definitions(-DSIMULATOR)
+
+add_executable(LabySimulateur ${MAIN_HEADERS} ${MAIN_SOURCES} ${SIMULATOR_HEADERS} ${SIMULATOR_SOURCES})
+target_link_libraries(LabySimulateur gui algorithm m)
 
 #C11
 set_property(TARGET LabySimulateur PROPERTY C_STANDARD 11)
