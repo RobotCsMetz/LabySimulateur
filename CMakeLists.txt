@@ -4,14 +4,17 @@ project(LabySimulateur VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-add_subdirectory(gui)
+#we are in simulator
+add_definitions(-DSIMULATOR)
+
+add_subdirectory(simulator)
 add_subdirectory(algorithm)
 
 file(GLOB MAIN_HEADERS ./*.h)
 file(GLOB MAIN_SOURCES ./*.c)
 
 add_executable(LabySimulateur ${MAIN_HEADERS} ${MAIN_SOURCES})
-target_link_libraries(LabySimulateur gui algorithm)
+target_link_libraries(LabySimulateur gui algorithm m)
 
 #C11
 set_property(TARGET LabySimulateur PROPERTY C_STANDARD 11)

@@ -85,7 +85,7 @@ SDL_Window* init_gui(uint8_t **matrix)
     return main_window;
 }
 
-void refresh_gui(int pos_x, int pos_y, double angle, uint8_t **known_matrix, int size)
+void refresh_gui(robot *rob, uint8_t **known_matrix, int size)
 {
     // main refresh
     auto_scale();
@@ -106,8 +106,8 @@ void refresh_gui(int pos_x, int pos_y, double angle, uint8_t **known_matrix, int
     //draw robot
     int height = (draw_scale*LABY_CELL_SIZE)/2;
     int width = ori_robot_w*height/ori_robot_h;
-    SDL_Rect r = {pos_x*draw_scale + offset_x, pos_y*draw_scale + offset_y, width, height};
-    SDL_RenderCopyEx(main_renderer, robot_img, NULL, &r, 180 + angle, NULL, SDL_FLIP_NONE);
+    SDL_Rect r = {rob->posi.pos_x * draw_scale + offset_x - width/2, rob->posi.pos_y * draw_scale + offset_y - height/2, width, height};
+    SDL_RenderCopyEx(main_renderer, robot_img, NULL, &r, 180 + rob->posi.angle, NULL, SDL_FLIP_NONE);
 
     SDL_RenderPresent(main_renderer);
 }
