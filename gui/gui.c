@@ -68,8 +68,8 @@ SDL_Window* init_gui(uint8_t **matrix)
         return NULL;
     }
 
-    SDL_Rect viewport = {0, 0, win_size, win_size};
-    SDL_RenderSetViewport(main_renderer, &viewport);
+    //SDL_Rect viewport = {0, 0, win_size, win_size};
+    //SDL_RenderSetViewport(main_renderer, &viewport);
     SDL_SetRenderDrawBlendMode(main_renderer, SDL_BLENDMODE_BLEND); // for alpha channel
 
     /* Load robot image */
@@ -105,7 +105,8 @@ void refresh_gui(int pos_x, int pos_y, double angle, uint8_t **known_matrix, int
 
     //draw robot
     int height = (draw_scale*LABY_CELL_SIZE)/2;
-    SDL_Rect r = {pos_x + offset_x, pos_y + offset_y, ori_robot_w*height/ori_robot_h, height};
+    int width = ori_robot_w*height/ori_robot_h;
+    SDL_Rect r = {pos_x*draw_scale + offset_x, pos_y*draw_scale + offset_y, width, height};
     SDL_RenderCopyEx(main_renderer, robot_img, NULL, &r, 180 + angle, NULL, SDL_FLIP_NONE);
 
     SDL_RenderPresent(main_renderer);
