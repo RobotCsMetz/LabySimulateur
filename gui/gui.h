@@ -16,4 +16,6 @@ void destroy_gui();
 
 void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size);
 
+int check_bit(uint8_t byteFlag, int whichBit);
+
 #endif
