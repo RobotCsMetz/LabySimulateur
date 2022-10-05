@@ -15,10 +15,10 @@ SDL_Window* init_gui(uint8_t **matrix);
 /// @brief Function to call to refresh the GUI
 /// @param pos_x Position x of the robot (in mm)
 /// @param pos_y Position y of the robot (in mm)
-/// @param angle Angle of the robot (in rad). A 0 value means pointing to right
+/// @param angle Angle of the robot (in deg, clockwise). A 0 value means pointing to right
 /// @param known_matrix The actual know matrix by the robot
 /// @param size The size of the known matrix
-void refresh_gui(int pos_x, int pos_y, int angle, uint8_t **known_matrix, int size);
+void refresh_gui(int pos_x, int pos_y, double angle, uint8_t **known_matrix, int size);
 
 /// @brief Function to call at the end to free the SDL library
 void destroy_gui();
