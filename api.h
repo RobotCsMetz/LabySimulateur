@@ -17,8 +17,8 @@ typedef struct velocity {
 
 /// @brief Structure of a positon in mm and deg
 typedef struct position {
-    uint16_t pos_x;
-    uint16_t pos_y;
+    float pos_x;
+    float pos_y;
     //angle du robot en degré, origine à droite (cercle trigo)
     double angle;
 } position;
@@ -43,9 +43,15 @@ uint8_t middleware_init();
 /// @return 1 if function succeed, 0 otherwise
 uint8_t middleware_get_robot_position(robot *new_robot);
 
+/// @brief Move the robot straightforward to the point pos
+/// @param rob The current robot
+/// @param target_pos The target position
+/// @return
+void middleware_goto_position(robot *rob, position *target_pos);
+
 
 #ifdef SIMULATOR
-#include "simulator/simulator.h"
+#include "gui/simulator.h"
 #endif
 
 #endif

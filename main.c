@@ -13,7 +13,8 @@ int main(int argc, char** argv)
     uint8_t **matrix, **unknow;
     struct timespec start, end;
     long delta_time;
-    robot rob;
+    // init a robot
+    robot rob = {{50., 50., 45.}, 500};
 
     matrix = create_2D_array(LABY_CELL_NUMBER, 255);
     unknow = copy_2D_array(matrix, LABY_CELL_NUMBER);
@@ -37,7 +38,7 @@ int main(int argc, char** argv)
         }
 
         simulator_update_position(&rob, (float)DELTA_TIME/1000);
-        refresh_gui(50, 50, 0, unknow, LABY_CELL_NUMBER);
+        refresh_gui(&rob, unknow, LABY_CELL_NUMBER);
 
         //wait the time remaining to get to delta_time
         clock_gettime(CLOCK_MONOTONIC_RAW, &end);
