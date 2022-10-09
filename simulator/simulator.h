@@ -2,7 +2,8 @@
 #define SIMULATOR_HEADER
 
 #define DELTA_TIME 20 //delta time between update in ms
-#define MAX_ACCEL 100 //(in mm/s²), calculate with a PFD ma = F
+#define MAX_ACCEL 250 //(in mm/s²), calculate with a PFD ma = F
+#define RADIUS_POINT_PRECISION 4 // 1mm precision
 
 /// @brief Update the position of the robot at each loop call
 /// @param rob The saved robot object

@@ -22,7 +22,7 @@ typedef struct robot {
     position posi;
 
     //speed in the angle direction (in mm/s)
-    uint16_t speed;
+    float speed;
 } robot;
 /* ### end structures ### */
 
@@ -42,7 +42,7 @@ uint8_t middleware_get_robot_position(robot *new_robot);
 /// @param target_pos The target position
 /// @param travel_speed The max speed reached during travel (mm/s)
 /// @return
-void middleware_goto_position(robot *rob, position *target_pos, float *travel_speed);
+void middleware_goto_position(robot *rob, position *target_pos, float travel_speed);
 
 /// @brief Stop the robot as fast as possible
 void middleware_stop();

@@ -14,7 +14,7 @@ int main(int argc, char** argv)
     struct timespec start, end;
     long delta_time;
     // init a robot
-    robot rob = {{50., 50., 45.}, 500};
+    robot rob = {{90., 90., 0}, 0};
 
     matrix = create_2D_array(LABY_CELL_NUMBER, 255);
     unknow = copy_2D_array(matrix, LABY_CELL_NUMBER);
@@ -23,6 +23,9 @@ int main(int argc, char** argv)
 
     init_gui(matrix);
     middleware_init();
+
+    position t = { LABY_CELL_SIZE * 9.5, LABY_CELL_SIZE * 9.5, 0};
+    middleware_goto_position(&rob, &t, 500);
 
     while(1) {
         clock_gettime(CLOCK_MONOTONIC_RAW, &start);
