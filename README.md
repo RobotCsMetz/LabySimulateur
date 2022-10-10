@@ -4,17 +4,22 @@ Compiler avec CMAKE 3.0, C11
 
 # Organisation
 ```
-LabySimulateur/
-|   main.c : code pour lancer sur machine
-|   api.h : déclaration des fonctions apis du middleware
-|
-|___algorithm/ : implémentation de la résolution
-|
-|__laby/ : code relatif à la génération, le chargement et la sauvegarde de labyrinthes
-|
-|___simulator/ : interface graphique avec OpenGL/SDL2 et fonctions de simulations
-|
-|___sdl2-lib/ : dossier pour la librairie SDL2 sous windows
+.
+├── algorithm |> implémentation de la résolution
+│   └── path.c
+├── api.h
+├── laby |> code relatif à la génération, le chargement et la sauvegarde de labyrinthes
+│   ├── laby_conf.h
+│   ├── laby_gen.c
+│   └── laby.h
+├── main.c
+├── simulator |> interface graphique avec OpenGL/SDL2 et fonctions de simulations
+│   ├── factice_middleware.c
+│   ├── gui.c
+│   ├── gui.h
+│   └── simulator.h
+├── utils.c
+└── sdl2-lib |> dossier pour la librairie SDL2 sous windows
 
 ```
 
