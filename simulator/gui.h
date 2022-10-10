@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include "../api.h"
-#include "../laby_conf.h"
+#include "../laby/laby.h"
 #include "../utils.h"
 
 /// @brief Initialise the GUI by creating the window and the renderer

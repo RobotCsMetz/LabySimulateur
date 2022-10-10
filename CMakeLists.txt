@@ -12,8 +12,11 @@ add_subdirectory(algorithm)
 
 file(GLOB MAIN_HEADERS ./*.h)
 file(GLOB MAIN_SOURCES ./*.c)
+file(GLOB LABY_HEADERS ./laby/*.h)
+file(GLOB LABY_SOURCES ./laby/*.c)
 
-add_executable(LabySimulateur ${MAIN_HEADERS} ${MAIN_SOURCES})
+
+add_executable(LabySimulateur ${MAIN_HEADERS} ${MAIN_SOURCES} ${LABY_SOURCES} ${LABY_HEADERS})
 target_link_libraries(LabySimulateur simulator algorithm m)
 
 #C11

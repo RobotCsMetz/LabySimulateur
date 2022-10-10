@@ -10,6 +10,8 @@ LabySimulateur/
 |
 |___algorithm/ : implémentation de la résolution
 |
+|__laby/ : code relatif à la génération, le chargement est la sauvegarde de labyrinthes
+|
 |___simulator/ : interface graphique avec OpenGL/SDL2 et fonctions de simulations
 |
 |___sdl2-lib/ : dossier pour la librairie SDL2 sous windows
