@@ -10,7 +10,7 @@ LabySimulateur/
 |
 |___algorithm/ : implémentation de la résolution
 |
-|__laby/ : code relatif à la génération, le chargement est la sauvegarde de labyrinthes
+|__laby/ : code relatif à la génération, le chargement et la sauvegarde de labyrinthes
 |
 |___simulator/ : interface graphique avec OpenGL/SDL2 et fonctions de simulations
 |
@@ -45,4 +45,3 @@ Les fonctions api sont déclarées dans le fichier `api.h`.
 > To do
 
 <hr>
-
