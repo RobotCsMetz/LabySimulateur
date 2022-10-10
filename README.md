@@ -4,7 +4,7 @@ Compiler avec CMAKE 3.0, C11
 
 # Organisation
 ```
-.
+LabySimulateur
 ├── algorithm |> implémentation de la résolution
 │   └── path.c
 ├── api.h
