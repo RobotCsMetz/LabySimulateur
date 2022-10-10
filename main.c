@@ -17,13 +17,16 @@ int main(int argc, char** argv)
     // init a robot
     robot rob = {{90., 90., 0}, 0};
 
+    //matrix generation
     matrix = create_2D_array(LABY_CELL_NUMBER, 255);
     gen_laby_from(LABY_CELL_NUMBER, matrix);
     unknow = create_2D_array(LABY_CELL_NUMBER, 0);
 
+    /* init functions from modules */
     init_gui(matrix);
     middleware_init();
 
+    // test move to position
     position t = { LABY_CELL_SIZE * 9.5, LABY_CELL_SIZE * 9.5, 0};
     middleware_goto_position(&rob, &t, 500);
 
@@ -40,10 +43,11 @@ int main(int argc, char** argv)
                 break;
         }
 
+        //update gui and robot position
         simulator_update_position(&rob, (float)DELTA_TIME/1000);
         refresh_gui(&rob, unknow, LABY_CELL_NUMBER);
 
-        //wait the time remaining to get to delta_time
+        //wait the time remaining to get to DELTA_TIME
         clock_gettime(CLOCK_MONOTONIC_RAW, &end);
         delta_time = (long)(DELTA_TIME*1000) - (end.tv_nsec - start.tv_nsec)/1000;
         if(delta_time >= 0)
