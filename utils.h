@@ -26,11 +26,20 @@ uint8_t **copy_2D_array(uint8_t **src, int size);
 /// @param byteFlag The byte to check
 /// @param whichBit The bit number to check (1-8)
 /// @return the bit value (0 or 1)
-inline uint8_t check_bit(uint8_t byteFlag, uint8_t whichBit);
+static inline uint8_t check_bit(uint8_t byteFlag, uint8_t whichBit)
+{
+    if (whichBit > 0 && whichBit <= 8)
+        return (byteFlag & (1<<(whichBit-1)));
+    else
+        return 0;
+}
 
 /// @brief Set to 1 bit number which in byte
 /// @param byte the byte to edit
 /// @param which the bit number
-inline void set_bit(uint8_t *byte, uint8_t which);
+static inline void set_bit(uint8_t *byte, uint8_t which)
+{
+    (*byte) |= 1<<(which-1);
+}
 
 #endif

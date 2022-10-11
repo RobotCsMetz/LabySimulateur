@@ -1,8 +1,3 @@
-/*
- * This file aims to simulate the reality by impleting functions declared in api.h
- * All the physic stands here !
- */
-
 #include <memory.h>
 #include <stdlib.h>
 #include "../api.h"

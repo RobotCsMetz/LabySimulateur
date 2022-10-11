@@ -24,8 +24,6 @@ void simulator_update_position(robot_t *rob, float delta_time);
 /// @param speed the speed
 void simulator_goto_position(robot_t *rob, position_t target_pos, float speed);
 
-//void simulator_update_velocity(robot_t *rob, float accel, float delta_time);
-
 /// @brief Simulate the read of the sensors (we can add some randomness)
 /// @param read_dest The struct where to write the sensors values
 void simulator_simulate_read_sensors(sensor_values_t *read_dest);
