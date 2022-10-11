@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <math.h>
 
-//time in ms between to position calculation
+//time in ms between to absolute position calculation
 #define POSITION_UPDATE_RATE 1000/50
 
 /* ### Structures declaration ### */
@@ -25,8 +25,12 @@ typedef struct robot_t {
     float speed;
 } robot_t;
 
+/// @brief struct for the values of sensors
 typedef struct sensor_values {
-
+    //infrared telemeter distance in mm
+    float front_telemeter;
+    float left_telemeter;
+    float right_telement;
 
 } sensor_values_t;
 /* ### end structures ### */
@@ -47,7 +51,12 @@ uint8_t middleware_get_robot_position(robot_t *new_robot);
 /// @param target_pos The target position
 /// @param travel_speed The max speed reached during travel (mm/s)
 /// @return
-void middleware_goto_position(robot_t *rob, position_t *target_pos, float travel_speed);
+void middleware_goto_position(robot_t *rob, position_t target_pos, float travel_speed);
+
+/// @brief Detect the wall around the robot and return the corresponding matrix value
+/// @param rob The current robot structure
+/// @return The matrix value (bits : 1 -> up, 2 -> left, 3 -> bottom, 4 -> left)
+uint8_t middleware_wall_position(robot_t *rob);
 
 /// @brief Stop the robot as fast as possible
 void middleware_stop();

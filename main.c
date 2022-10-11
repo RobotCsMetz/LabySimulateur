@@ -27,6 +27,7 @@ int main(int argc, char** argv)
     /* init functions from modules */
     init_gui(matrix);
     middleware_init();
+    simulator_init(matrix, &rob);
     init_state(STATE_STANDBY);
 
 
