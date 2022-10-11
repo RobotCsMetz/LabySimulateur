@@ -11,4 +11,7 @@
 /// @param matrix the matrix where the maze is written
 void gen_laby_from(int size, uint8_t **matrix);
 
+uint8_t** import_laby_from(char *laby_path);
+void output_laby_from(uint8_t **matrix);
+
 #endif

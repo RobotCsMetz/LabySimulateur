@@ -1,0 +1,18 @@
+# The size is set by LABY_CELL_NUMBER
+# For each (x,y) square, only the right and bottom wall are defined (0 < x,y < size)
+# "s" mean bottom, "d" right, "sd" bottom and right and "" nothing
+# The values are represented in a matrix like form, with tab as separator
+# Trailing spaces are not necessary
+# WARNING : This file mustn't contains empty lines (except at the end)
+# This file can be used as an example
+s   sd  s       s   sd  d   sd  s   sd  s
+d   s   sd  sd  sd  s   s   sd  s   s   s
+sd  sd  sd  sd  d   s   d   s   ds  d   s
+s   sd  s   d   s   sd  d   sd  s   sd
+d   s   sd  sd  sd  s   s   sd  s   sd
+sd  sd  sd  sd  d   s   d   s   ds  s   s
+s   sd  s   d   s   sd  d   sd  s   s   s
+d   s   sd  sd  sd  s   s   sd  s   d
+sd  sd  sd  sd  d   s   d   s   ds  d
+s   sd  s   d   s   sd  d   sd  s   s   s
+    d       d       d   d    d
