@@ -6,6 +6,7 @@
 
 void gen_laby_from(int size, uint8_t **matrix)
 {
+
     // 0 -> empty
     // 1 -> haut
     // 2 -> droite
@@ -291,13 +292,14 @@ void gen_laby_from(int size, uint8_t **matrix)
                             continue;
                         } else {
                             is_there_any_hole = 1;
+                            printf("Some hole were found, retry \n");
                         }
                     } else {
                         is_there_any_hole = 1;
+                        printf("Some hole were found, retry \n");
                     }
                 }
             }
         }
-        printf("Some hole were found, retry \n");
     }
 }

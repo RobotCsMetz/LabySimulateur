@@ -18,8 +18,14 @@ int main(int argc, char** argv)
     robot rob = {{90., 90., 0}, 0};
 
     //matrix generation
-    matrix = create_2D_array(LABY_CELL_NUMBER, 255);
-    gen_laby_from(LABY_CELL_NUMBER, matrix);
+    // matrix = create_2D_array(LABY_CELL_NUMBER, 255);
+    //gen_laby_from(LABY_CELL_NUMBER, matrix);
+
+    // import test
+    matrix = import_laby_from("../laby/laby_export_format.txt");
+
+    output_laby_from(matrix);
+
     unknow = create_2D_array(LABY_CELL_NUMBER, 0);
 
     /* init functions from modules */
