@@ -6,10 +6,10 @@
 #define RADIUS_POINT_PRECISION 4 // 1mm precision
 
 /// @brief Update the position of the robot at each loop call
-/// @param rob The saved robot object
+/// @param rob The saved robot_t object
 /// @param delta_time Delta time between two call (in s)
-void simulator_update_position(robot *rob, float delta_time);
+void simulator_update_position(robot_t *rob, float delta_time);
 
-void simulator_update_velocity(robot *rob, float accel, float delta_time);
+void simulator_update_velocity(robot_t *rob, float accel, float delta_time);
 
 #endif

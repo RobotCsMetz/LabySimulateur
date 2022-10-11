@@ -3,6 +3,8 @@
 #include <time.h>
 #include <unistd.h>
 #include <math.h>
+
+#include "algorithm/state.h"
 #include "laby/laby.h"
 #include "simulator/gui.h"
 #include "utils.h"
@@ -14,8 +16,8 @@ int main(int argc, char** argv)
     uint8_t **matrix, **unknow;
     struct timespec start, end;
     long delta_time;
-    // init a robot
-    robot rob = {{90., 90., 0}, 0};
+    // init a robot_t
+    robot_t rob = {{90., 90., 0}, 0};
 
     //matrix generation
     matrix = create_2D_array(LABY_CELL_NUMBER, 255);
@@ -25,10 +27,8 @@ int main(int argc, char** argv)
     /* init functions from modules */
     init_gui(matrix);
     middleware_init();
+    init_state(STATE_STANDBY);
 
-    // test move to position
-    position t = { LABY_CELL_SIZE * 9.5, LABY_CELL_SIZE * 9.5, 0};
-    middleware_goto_position(&rob, &t, 500);
 
     while(1) {
         clock_gettime(CLOCK_MONOTONIC_RAW, &start);
@@ -44,6 +44,7 @@ int main(int argc, char** argv)
         }
 
         //update gui and robot position
+        state_loop(rob);
         simulator_update_position(&rob, (float)DELTA_TIME/1000);
         refresh_gui(&rob, unknow, LABY_CELL_NUMBER);
 
