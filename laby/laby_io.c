@@ -126,7 +126,7 @@ void output_laby_from(uint8_t **matrix)
     FILE *fptr;
     fptr = fopen(path,"w");
     if(fptr == NULL) {
-        printf("Error!");
+        printf("Failed to find the ../saved directory,");
         exit(1);
     }
     fprintf(fptr,"%s",stringify);
