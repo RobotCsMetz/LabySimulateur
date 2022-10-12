@@ -110,7 +110,7 @@ void simulator_simulate_read_sensors(sensor_values_t *read_dest, robot_t *rob)
                         y += ITE_STEP;
                         x -= slope*ITE_STEP;
                     }
-                }
+                } 
             }
         }
     }
