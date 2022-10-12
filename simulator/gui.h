@@ -16,7 +16,7 @@ SDL_Window* init_gui(uint8_t **matrix);
 /// @param rob The robot structure representing it
 /// @param known_matrix The actual know matrix by the robot
 /// @param size The size of the known matrix
-void refresh_gui(robot *rob, uint8_t **known_matrix, int size);
+void refresh_gui(robot_t *rob, uint8_t **known_matrix, int size);
 
 /// @brief Function to call at the end to free the SDL library
 void destroy_gui();

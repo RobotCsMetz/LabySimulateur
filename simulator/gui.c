@@ -72,7 +72,7 @@ SDL_Window* init_gui(uint8_t **matrix)
     //SDL_RenderSetViewport(main_renderer, &viewport);
     SDL_SetRenderDrawBlendMode(main_renderer, SDL_BLENDMODE_BLEND); // for alpha channel
 
-    /* Load robot image */
+    /* Load robot_t image */
     SDL_Surface *s = SDL_LoadBMP("../robot.bmp");
     robot_img = SDL_CreateTextureFromSurface(main_renderer, s);
     SDL_SetTextureBlendMode(robot_img, SDL_BLENDMODE_NONE);
@@ -85,7 +85,7 @@ SDL_Window* init_gui(uint8_t **matrix)
     return main_window;
 }
 
-void refresh_gui(robot *rob, uint8_t **known_matrix, int size)
+void refresh_gui(robot_t *rob, uint8_t **known_matrix, int size)
 {
     // main refresh
     auto_scale();
@@ -103,7 +103,7 @@ void refresh_gui(robot *rob, uint8_t **known_matrix, int size)
         draw_matrix(main_renderer, known_matrix, LABY_CELL_NUMBER);
     }
 
-    //draw robot
+    //draw robot_t
     int height = (draw_scale*LABY_CELL_SIZE)/2;
     int width = ori_robot_w*height/ori_robot_h;
     SDL_Rect r = {rob->posi.pos_x * draw_scale + offset_x - width/2, rob->posi.pos_y * draw_scale + offset_y - height/2, width, height};

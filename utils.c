@@ -34,11 +34,3 @@ uint8_t **copy_2D_array(uint8_t **src, int size)
 
     return ptr;
 }
-
-int check_bit(uint8_t byteFlag, int whichBit)
-{
-    if (whichBit > 0 && whichBit <= 8)
-        return (byteFlag & (1<<(whichBit-1)));
-    else
-        return 0;
-}
