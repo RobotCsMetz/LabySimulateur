@@ -94,21 +94,21 @@ void simulator_simulate_read_sensors(sensor_values_t *read_dest, robot_t *rob)
             if (intercept) {
                 lidar_val[i] = sqrt(pow(x - rob->posi.pos_x, 2) + pow(y - rob->posi.pos_y, 2));
             } else {
-                if (tmp_angle < M_PI/2 || tmp_angle > 3*M_PI/2) {
-                    if (!reverse_xy) {
+                if (!reverse_xy) {
+                    if (tmp_angle < M_PI/2 || tmp_angle > 3*M_PI/2) {
                         x += ITE_STEP;
                         y -= slope*ITE_STEP;
                     } else {
-                        y += ITE_STEP;
-                        x -= slope*ITE_STEP;
-                    }
-                } else {
-                    if (!reverse_xy) {
                         x -= ITE_STEP;
                         y += slope*ITE_STEP;
-                    } else {
+                    }
+                } else {
+                    if (tmp_angle < M_PI) {
                         y -= ITE_STEP;
                         x += slope*ITE_STEP;
+                    } else {
+                        y += ITE_STEP;
+                        x -= slope*ITE_STEP;
                     }
                 }
             }
