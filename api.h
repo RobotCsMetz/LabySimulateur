@@ -41,9 +41,9 @@ typedef struct sensor_values {
 
 /* ### real functions declarations ### */
 
-/// @brief Initialise every sensors and var for the middleware
+/// @brief Initialise every sensors, variables and the initial robot for the middleware
 /// @return 1 if succeed, 0 otherwise
-uint8_t middleware_init();
+uint8_t middleware_init(robot_t *rob);
 
 /// @brief Read sensors and compute values to give the robot_t current position (normally called every 20ms, 50Hz)
 /// @param new_robot_t The next robot_t state where values will be stored

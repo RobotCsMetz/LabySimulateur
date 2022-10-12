@@ -107,7 +107,7 @@ void refresh_gui(robot_t *rob, matrix_t known_matrix, int size)
     int height = (draw_scale*LABY_CELL_SIZE)/2;
     int width = ori_robot_w*height/ori_robot_h;
     SDL_Rect r = {rob->posi.pos_x * draw_scale + offset_x - width/2, rob->posi.pos_y * draw_scale + offset_y - height/2, width, height};
-    SDL_RenderCopyEx(main_renderer, robot_img, NULL, &r, 180 + rob->posi.angle, NULL, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(main_renderer, robot_img, NULL, &r, - rob->posi.angle*M_PI/180, NULL, SDL_FLIP_NONE);
 
     SDL_RenderPresent(main_renderer);
 }

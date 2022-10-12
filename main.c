@@ -17,7 +17,7 @@ int main(int argc, char** argv)
     struct timespec start, end;
     long delta_time;
     // init a robot_t
-    robot_t rob = {{90., 90., 0}, 0};
+    robot_t rob;
 
     //if there is a path to a laby given
     if(argc > 1) {
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 
     /* init functions from modules */
     init_gui(matrix);
-    middleware_init();
+    middleware_init(&rob);
     simulator_init(matrix, &rob);
     init_state(STATE_STANDBY);
 

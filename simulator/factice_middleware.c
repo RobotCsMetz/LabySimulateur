@@ -1,9 +1,17 @@
 #include <memory.h>
 #include <stdlib.h>
+#include "../laby/laby_conf.h"
 #include "../api.h"
 
-uint8_t middleware_init()
+uint8_t middleware_init(robot_t *rob)
 {
+    //robot init
+    //the robot start at cell (1, MAX_NUMBER - 1 )
+    rob->posi.pos_x = LABY_CELL_SIZE/2; //middle of x cell
+    rob->posi.pos_y = (LABY_CELL_NUMBER - 1.5)*LABY_CELL_SIZE;
+
+    rob->posi.angle = 0;
+
     return 1;
 }
 
