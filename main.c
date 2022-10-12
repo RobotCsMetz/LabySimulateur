@@ -13,7 +13,7 @@
 int main(int argc, char** argv)
 {
     SDL_Event event;
-    uint8_t **matrix, **unknow;
+    matrix_t matrix, unknow;
     struct timespec start, end;
     long delta_time;
     // init a robot_t

@@ -1,8 +1,8 @@
 #include "utils.h"
 
-uint8_t **create_2D_array(int size, uint8_t val)
+matrix_t create_2D_array(int size, uint8_t val)
 {
-    uint8_t **ptr;
+    matrix_t ptr;
     int i=0;
     ptr = malloc(sizeof(uint8_t*)*size);
     for(i=0; i < size; i++) {
@@ -13,7 +13,7 @@ uint8_t **create_2D_array(int size, uint8_t val)
     return ptr;
 }
 
-void free_2D_array(uint8_t **array, int size)
+void free_2D_array(matrix_t array, int size)
 {
     int i;
     for(i=0; i < size; i++) {
@@ -22,10 +22,10 @@ void free_2D_array(uint8_t **array, int size)
     free(array);
 }
 
-uint8_t **copy_2D_array(uint8_t **src, int size)
+matrix_t copy_2D_array(matrix_t src, int size)
 {
     int i,j;
-    uint8_t **ptr = create_2D_array(size, 0);
+    matrix_t ptr = create_2D_array(size, 0);
     for(i=0; i < size; i++) {
         for(j=0; j < size; j++) {
             ptr[i][j] = src[i][j];

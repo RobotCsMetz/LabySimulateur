@@ -1,7 +1,7 @@
 #include "gui.h"
 
 /* static vars */
-uint8_t **global_matrix;
+matrix_t global_matrix;
 SDL_Window *main_window;
 SDL_Renderer *main_renderer;
 SDL_Texture *robot_img;
@@ -32,7 +32,7 @@ void auto_scale()
     }
 }
 
-SDL_Window* init_gui(uint8_t **matrix)
+SDL_Window* init_gui(matrix_t matrix)
 {
 
     SDL_DisplayMode DM;
@@ -85,7 +85,7 @@ SDL_Window* init_gui(uint8_t **matrix)
     return main_window;
 }
 
-void refresh_gui(robot_t *rob, uint8_t **known_matrix, int size)
+void refresh_gui(robot_t *rob, matrix_t known_matrix, int size)
 {
     // main refresh
     auto_scale();
@@ -112,7 +112,7 @@ void refresh_gui(robot_t *rob, uint8_t **known_matrix, int size)
     SDL_RenderPresent(main_renderer);
 }
 
-void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size)
+void draw_matrix(SDL_Renderer *renderer, matrix_t matrix, int size)
 {
     // prefiled rect for wall
     SDL_Rect verti_wall = {0, 0, WALL_WIDTH*draw_scale, LABY_CELL_SIZE*draw_scale};

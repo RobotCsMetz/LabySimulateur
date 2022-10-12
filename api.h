@@ -7,6 +7,10 @@
 //time in ms between to absolute position calculation
 #define POSITION_UPDATE_RATE 1000/50
 
+/* special type */
+typedef uint8_t** matrix_t;
+/* end special type */
+
 /* ### Structures declaration ### */
 
 /// @brief Structure of a positon in mm and deg

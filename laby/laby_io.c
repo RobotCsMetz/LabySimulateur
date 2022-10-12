@@ -5,14 +5,14 @@
 #include "laby.h"
 #include "../utils.h"
 
-uint8_t** import_laby_from(char *laby_path)
+matrix_t import_laby_from(char *laby_path)
 {
     FILE * fp;
     char * line = NULL;
     size_t len = 0;
     ssize_t read;
 
-    uint8_t **matrix, **unknow;
+    matrix_t matrix;
     matrix = create_2D_array(LABY_CELL_NUMBER, 0);
 
     fp = fopen(laby_path, "r");
@@ -92,7 +92,7 @@ uint8_t** import_laby_from(char *laby_path)
     return matrix;
 }
 
-void output_laby_from(uint8_t **matrix)
+void output_laby_from(matrix_t matrix)
 {
     int cnt = 0;
     char stringify[4*LABY_CELL_NUMBER*LABY_CELL_NUMBER+LABY_CELL_NUMBER];

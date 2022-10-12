@@ -11,7 +11,7 @@
 #define sensors_read_values(read_dest) simulator_simulate_read_sensors(read_dest)
 
 
-void simulator_init(uint8_t **real_matrix, robot_t *real_robot);
+void simulator_init(matrix_t real_matrix, robot_t *real_robot);
 
 /// @brief Update the position of the robot at each loop call
 /// @param rob The saved robot_t object

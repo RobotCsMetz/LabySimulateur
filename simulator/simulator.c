@@ -8,9 +8,9 @@ robot_t *saved_robot = NULL;
 position_t dest_pos = {-1, -1};
 float travel_speed, accel_time;
 float current_timer;
-uint8_t **matrix;
+matrix_t matrix;
 
-void simulator_init(uint8_t **real_matrix, robot_t *real_robot)
+void simulator_init(matrix_t real_matrix, robot_t *real_robot)
 {
     matrix = real_matrix;
     saved_robot = real_robot;

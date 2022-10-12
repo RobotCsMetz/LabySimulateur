@@ -10,13 +10,13 @@
 /// @brief Initialise the GUI by creating the window and the renderer
 /// @param matrix The previously generated matrix to show in background
 /// @return A pointer to the created window
-SDL_Window* init_gui(uint8_t **matrix);
+SDL_Window* init_gui(matrix_t matrix);
 
 /// @brief Function to call to refresh the GUI
 /// @param rob The robot structure representing it
 /// @param known_matrix The actual know matrix by the robot
 /// @param size The size of the known matrix
-void refresh_gui(robot_t *rob, uint8_t **known_matrix, int size);
+void refresh_gui(robot_t *rob, matrix_t known_matrix, int size);
 
 /// @brief Function to call at the end to free the SDL library
 void destroy_gui();
@@ -25,6 +25,6 @@ void destroy_gui();
 /// @param renderer The renderer where to draw
 /// @param matrix The matrix to draw
 /// @param size The size of the matrix
-void draw_matrix(SDL_Renderer *renderer, uint8_t **matrix, int size);
+void draw_matrix(SDL_Renderer *renderer, matrix_t matrix, int size);
 
 #endif

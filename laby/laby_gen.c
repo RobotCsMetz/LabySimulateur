@@ -4,7 +4,7 @@
 #include "../utils.h"
 #include "laby.h"
 
-void gen_laby_from(int size, uint8_t **matrix)
+void gen_laby_from(int size, matrix_t matrix)
 {
 
     // 0 -> empty
