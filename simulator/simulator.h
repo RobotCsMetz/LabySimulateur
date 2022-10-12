@@ -8,7 +8,7 @@
 #define TELEMETER_MAX_DISTANCE 300
 
 /* aliases for useful functions */
-#define sensors_read_values(read_dest) simulator_simulate_read_sensors(read_dest)
+#define sensors_read_values(read_dest, rob) simulator_simulate_read_sensors(read_dest, rob)
 
 
 void simulator_init(matrix_t real_matrix, robot_t *real_robot);
@@ -26,6 +26,6 @@ void simulator_goto_position(robot_t *rob, position_t target_pos, float speed);
 
 /// @brief Simulate the read of the sensors (we can add some randomness)
 /// @param read_dest The struct where to write the sensors values
-void simulator_simulate_read_sensors(sensor_values_t *read_dest);
+void simulator_simulate_read_sensors(sensor_values_t *read_dest, robot_t *rob);
 
 #endif

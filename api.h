@@ -6,6 +6,8 @@
 
 //time in ms between to absolute position calculation
 #define POSITION_UPDATE_RATE 1000/50
+#define LIDAR_VIEW_ANGLE (float)M_PI/2 // in radian
+#define LIDAR_RESOLV 8 // The length of the buf return by the lidar
 
 /* special type */
 typedef uint8_t** matrix_t;

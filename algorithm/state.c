@@ -26,6 +26,5 @@ void state_loop(robot_t rob)
         default:
             break;
     }
-
     current_state = next_state;
 }
