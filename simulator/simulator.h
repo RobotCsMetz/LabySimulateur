@@ -28,4 +28,6 @@ void simulator_goto_position(robot_t *rob, position_t target_pos, float speed);
 /// @param read_dest The struct where to write the sensors values
 void simulator_simulate_read_sensors(sensor_values_t *read_dest);
 
+uint8_t simulator_position_reached(robot_t *rob);
+
 #endif

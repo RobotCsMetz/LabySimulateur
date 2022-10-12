@@ -3,7 +3,7 @@
 #include "../laby/laby_conf.h"
 #include "../api.h"
 
-matrix_t *real_laby;
+matrix_t real_laby;
 
 uint8_t middleware_init(robot_t *rob, matrix_t mat)
 {
@@ -65,4 +65,9 @@ uint8_t middleware_wall_position(robot_t *rob)
 
     //compute values with current position to know if there is a wall
 
+}
+
+uint8_t middleware_position_reached(robot_t *rob)
+{
+    return simulator_position_reached(rob);
 }

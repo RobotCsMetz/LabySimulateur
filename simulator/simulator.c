@@ -56,7 +56,14 @@ void simulator_update_position(robot_t *rob, float delta_time)
         }
     } else {
         rob->speed = 0;
+        dest_pos.pos_x = -1;
+        dest_pos.pos_y = -1;
     }
 
     current_timer += delta_time;
+}
+
+uint8_t simulator_position_reached(robot_t *rob)
+{
+    return dest_pos.pos_x == -1;
 }
