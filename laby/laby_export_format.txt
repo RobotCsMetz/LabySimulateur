@@ -1,6 +1,7 @@
 # The size is set by LABY_CELL_NUMBER
 # For each (x,y) square, only the right and bottom wall are defined (0 < x,y < size)
 # "s" mean bottom, "d" right, "sd" bottom and right and "" nothing
+# No need to add external borders, it is handled by the import
 # The values are represented in a matrix like form, with tab as separator
 # Trailing spaces are not necessary
 # WARNING : This file mustn't contains empty lines (except at the end)

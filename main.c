@@ -19,14 +19,20 @@ int main(int argc, char** argv)
     // init a robot_t
     robot_t rob = {{90., 90., 0}, 0};
 
-    //matrix generation
-    // matrix = create_2D_array(LABY_CELL_NUMBER, 255);
-    //gen_laby_from(LABY_CELL_NUMBER, matrix);
+    //if there is a path to a laby given
+    if(argc > 1) {
+        printf("Importing %s ", argv[1]);
+        matrix = import_laby_from(argv[1]);
+        printf("[ok]\n");
+    } else {
+        //matrix generation
+        printf("Generating a maze ...\n");
+        matrix = create_2D_array(LABY_CELL_NUMBER, 255);
+        gen_laby_from(LABY_CELL_NUMBER, matrix);
 
-    // import test
-    matrix = import_laby_from("../laby/laby_export_format.txt");
-
-    output_laby_from(matrix);
+        //save it for later
+        output_laby_from(matrix);
+    }
 
     unknow = create_2D_array(LABY_CELL_NUMBER, 0);
 

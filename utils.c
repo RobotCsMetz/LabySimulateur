@@ -4,7 +4,7 @@ matrix_t create_2D_array(int size, uint8_t val)
 {
     matrix_t ptr;
     int i=0;
-    ptr = malloc(sizeof(uint8_t*)*size);
+    ptr = malloc(sizeof(matrix_t)*size);
     for(i=0; i < size; i++) {
         ptr[i] = malloc(sizeof(uint8_t)*size);
         memset(ptr[i], val, sizeof(uint8_t)*size);
