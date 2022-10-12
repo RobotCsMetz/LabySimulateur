@@ -7,6 +7,17 @@
 //time in ms between to absolute position calculation
 #define POSITION_UPDATE_RATE 1000/50
 
+#define DEFAULT_EXPLORE_MOVE_SPEED 1000 // 2 m/s default travel speed
+
+/* define for movement */
+
+#define MOVE_UP 1
+#define MOVE_RIGHT 2
+#define MOVE_LEFT 3
+#define MOVE_DOWN 4
+
+/* end define          */
+
 /* special type */
 typedef uint8_t** matrix_t;
 /* end special type */
@@ -43,7 +54,7 @@ typedef struct sensor_values {
 
 /// @brief Initialise every sensors, variables and the initial robot for the middleware
 /// @return 1 if succeed, 0 otherwise
-uint8_t middleware_init(robot_t *rob);
+uint8_t middleware_init(robot_t *rob, matrix_t mat);
 
 /// @brief Read sensors and compute values to give the robot_t current position (normally called every 20ms, 50Hz)
 /// @param new_robot_t The next robot_t state where values will be stored
@@ -56,6 +67,8 @@ uint8_t middleware_get_robot_position(robot_t *new_robot);
 /// @param travel_speed The max speed reached during travel (mm/s)
 /// @return
 void middleware_goto_position(robot_t *rob, position_t target_pos, float travel_speed);
+
+void middleware_move_cell(robot_t *rob, uint8_t number_of_cell, uint8_t direction);
 
 /// @brief Detect the wall around the robot and return the corresponding matrix value
 /// @param rob The current robot structure

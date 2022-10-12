@@ -15,6 +15,6 @@ void init_state(const uint8_t default_state);
 
 /// @brief Main state loop for the algorithm
 /// @param rob Struct representing the robot when calling the loop
-void state_loop(robot_t rob);
+void state_loop(robot_t *rob);
 
 #endif

@@ -2,8 +2,8 @@
 #define SIMULATOR_HEADER
 
 #define DELTA_TIME 20 //delta time between update in ms
-#define MAX_ACCEL 250 //(in mm/s²), calculate with a PFD ma = F
-#define RADIUS_POINT_PRECISION 4 // 1mm precision
+#define MAX_ACCEL 20000 //(in mm/s²), calculate with a PFD ma = F
+#define RADIUS_POINT_PRECISION 4 // radius of the cirlce detection in mm
 
 #define TELEMETER_MAX_DISTANCE 300
 
