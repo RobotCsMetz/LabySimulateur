@@ -33,6 +33,7 @@ void simulator_simulate_read_sensors(sensor_values_t *read_dest, robot_t *rob)
 {
     // The idea here is to simulate what the lidar see
     // To mimic a real situation, some noise will be introduced
+    // This noise is induce by ITE_STEP, the higher it is, the lower the resolution, a value of x mean ±x (mm) of precision.
     const float ITE_STEP = 1;
     float lidar_val[LIDAR_RESOLV];
     float angle = rob->posi.angle;
@@ -46,10 +47,10 @@ void simulator_simulate_read_sensors(sensor_values_t *read_dest, robot_t *rob)
         while (tmp_angle <= 0) tmp_angle += 2*M_PI;
         if ((tmp_angle > M_PI/4 && tmp_angle < 3*M_PI/4) || (tmp_angle > 5*M_PI/4 && tmp_angle < 7*M_PI/4)) {
             reverse_xy = 1;
-            if (tmp_angle < M_PI/2) tmp_angle -= M_PI/4;
-            else if (tmp_angle < M_PI) tmp_angle += M_PI/4;
-            else if (tmp_angle < 3*M_PI/2) tmp_angle -= M_PI/4;
-            else tmp_angle += M_PI/4;
+            if (tmp_angle < M_PI/2) tmp_angle = M_PI/2 - tmp_angle;
+            else if (tmp_angle < M_PI) tmp_angle = 3*M_PI/2 - tmp_angle ;
+            else if (tmp_angle < 3*M_PI/2) tmp_angle = 5*M_PI/2 - tmp_angle ;
+            else tmp_angle = 7*M_PI/2 - tmp_angle;
         }
         // The slope value is now always reasonable
         float slope = tanf(tmp_angle);
