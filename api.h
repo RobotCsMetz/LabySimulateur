@@ -6,6 +6,8 @@
 
 //time in ms between to absolute position calculation
 #define POSITION_UPDATE_RATE 1000/50
+#define LIDAR_VIEW_ANGLE (float)M_PI/2 // in radian
+#define LIDAR_RESOLV 8 // The length of the buf return by the lidar
 
 #define DEFAULT_EXPLORE_MOVE_SPEED 1000 // 2 m/s default travel speed
 

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../laby/laby_conf.h"
 #include "../api.h"
+#include <stdio.h>
 
 matrix_t real_laby;
 
@@ -61,7 +62,7 @@ uint8_t middleware_wall_position(robot_t *rob)
     uint8_t ret_byte;
 
     //get sensors values
-    sensors_read_values(&vals);
+    sensors_read_values(&vals, rob);
 
     //compute values with current position to know if there is a wall
 
